@@ -1,0 +1,46 @@
+<md-dialog aria-label="Login"   style="width: 70%">
+    <md-dialog-content>
+        <div class="width-100 pull-right">
+            <label style="font-size: 26px;margin-right: 20px;cursor: pointer" ng-click="closeModalWindow()">x</label>
+        </div>
+        <div class="md-dialog-content">
+            <md-content layout-padding="">
+                <div class="table-responsive">
+                    <table class="table" style="font-size: 16px">
+                        <thead>
+                            <tr>
+                                <!--<th>#</th>-->
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Net Amount</th>
+                                <th>Payment Mode</th>
+                                <th>Payment Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="order in orderHistory">
+                                <!--<td>{{$index+1}}</td>-->
+                                <td># {{order.orderID}}</td>
+                                <td>{{order.orderDate}}</td>
+                                <td>{{order.netAmount}}</td>
+                                <td>
+                                    <span ng-if="order.paymentMode == 'CSH'">Cash On Delivery</span>
+                                    <span ng-if="order.paymentMode != 'CSH'">Online Payment</span>
+                                </td>
+                                <td>
+                                    <span ng-if="order.paymentStatus == 'P'">Pending</span>
+                                    <span ng-if="order.paymentStatus == 'X'" style="color: red">Cancelled</span>
+                                    <span ng-if="order.paymentStatus == 'C'" style="color: green">Completed</span>
+                                </td>
+                                <td>
+                                    <button ng-if="order.cancelOrder" ng-click="cancelOrderByUser(order.orderID)" class="btn btn-primary">&nbsp;Cancel Order</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </md-content>
+        </div>
+    </md-dialog-content>
+</md-dialog>

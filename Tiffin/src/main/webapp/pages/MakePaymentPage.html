@@ -1,0 +1,71 @@
+<md-dialog aria-label="Mango (Fruit)"  ng-cloak style="width: 30%">
+    <md-dialog-content >
+        <div class="width-100 pull-right">
+            <label style="font-size: 26px;margin-right: 20px;cursor: pointer" ng-click="closeModalWindow()">x</label>
+        </div>
+        <div class="md-dialog-content">
+            <md-content layout-padding="" ng-show="!paymentSucess">
+            <form name="payment">
+             <div class="width-100" align="center">
+                 <label style="font-size: 16px">Your Payable amount</label>
+                 <label style="    font-size: 25px;display: block;color: green;">Rs. {{gradTotal | number:2}}</label>
+
+             </div>
+                <div class="width-100" align="center">
+                    <label style="font-size: 14px">Pay With</label>
+                    <md-radio-group ng-model="signup.paymentMode">
+
+                        <md-radio-button align="left" style="width: 80%;font-size: 18px" value="COD" class="md-primary">Cash On Delivery(COD)</md-radio-button>
+                        <md-radio-button align="left" style="width: 80%;font-size: 18px" value="ONLINE" class="md-primary"> Online </md-radio-button>
+
+
+                    </md-radio-group>
+
+                </div>
+                <div class="width-100">
+                    <label ng-if="loginUser.addressList.length>0" style="font-size: 16px">Deliver At</label><br>
+                    <label ng-if="loginUser.addressList.length>0" style="font-size: 14px;font-weight: normal">{{addressString}}</label>
+                    <div class="width-100" ng-if="loginUser.addressList.length<=0">
+                        <form name="AddAddressForm">
+                            <h4>Address Details</h4>
+                        <md-input-container class="md-block" style="margin-top: 10%">
+                            <label style="font-size: 16px!important;">Company Name</label>
+                            <input type="text" required style="font-size: 20px!important;" maxlength="45" name="address1" ng-model="signup.address1" >
+                        </md-input-container>
+                        <md-input-container class="md-block" style="margin-top: 10%">
+                            <label style="font-size: 16px!important;">Near By LandMark</label>
+                            <input type="text" style="font-size: 20px!important;" name="address1" maxlength="45" ng-model="signup.address2" >
+                        </md-input-container>
+                        <md-input-container class="md-block" style="margin-top: 10%">
+                            <label style="font-size: 16px!important;">Pin Code</label>
+                            <input type="text"  style="font-size: 20px!important;" name="pinCode" maxlength="6" ng-model="signup.pinCode" >
+                        </md-input-container>
+                        <div class="width-100">
+                            <button ng-disabled="AddAddressForm.$invalid" ng-click="AddCustomerAddress()" style="width: 100%;background-color: #FF883F;color: white;" class="btn btn-primary">&nbsp;Save & Proceed</button>
+                        </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="width-100" ng-if="loginUser.addressList.length>0">
+                    <button ng-disabled="payment.$invalid" ng-click="placeOrderFromSelectedChoice()" style="width: 100%;background-color: #FF883F;color: white;" class="btn btn-primary">&nbsp;Proceed</button>
+                </div>
+            </form>
+            </md-content>
+            <md-content ng-show="paymentSucess" align="center">
+                <div class="width-100" align="center">
+                    <label style="color: green;font-size: 20px;font-weight: bold">Order Success</label>
+                </div>
+                <div class="width-100" align="center">
+                    <img src="img/smileyicon.png" height="100px">
+                </div>
+                <div class="width-100" style="margin-top: 5%;margin-bottom: 5%;">
+                    <label style="font-size: 20px">Order ID:#{{orderID}} </label>
+                </div>
+                <div class="width-100" align="center">
+                    <button ng-click="goToMainPage()" class="btn btn-primary" style="width: 45%;background-color: #FF883F;color: white;">Okay</button>
+                </div>
+            </md-content>
+        </div>
+    </md-dialog-content>
+</md-dialog>

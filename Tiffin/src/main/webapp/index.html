@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html ng-app="ui.bootstrap.demo">
+    <head>
+
+        <script src="js/jquery-2.2.3.min.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <script src="js/angular.js"></script>
+        <script src="js//angular-animate.js"></script>
+        <script src="js/ui-bootstrap-tpls.js"></script>
+        <script src="smallbite.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/angular-material.min.css">
+        <script src="js/dateFormater.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/angular-aria.min.js"></script>
+        <script src="js/angular-messages.min.js"></script>
+        <script src="js/angular-material.min.js"></script>
+        <script src="smallbite.js"></script>
+
+        <style>
+            @font-face {
+                font-family: ROBOTO;
+                src: url("css/Roboto/Roboto-Regular.ttf");
+            }
+            *{
+                font-family: ROBOTO;
+            }
+            .md-tab span{
+                color: #ffffff!important;
+                font-size: 14px;
+            }
+            md-tabs .md-tab.md-active{
+                color: #ffffff!important;
+            }
+            .tabActiveClass{
+                font-size: 20px;
+                background-color: #FF883F!important;
+                color: white;
+                font-weight: 600;
+                height: 40px;
+                padding-top: 5px;
+                cursor: pointer;
+            }
+            .tabInactiveClass{
+                height: 40px;
+                font-size: 20px;
+                color: darkolivegreen;
+                font-weight: 600;
+                border: 1px solid lightgray;
+                padding-top: 5px;
+                cursor: pointer;
+            }
+            .tabClass{
+                height: 40px;
+                font-size: 17px;
+                font-weight: 600;
+                padding-top: 8px;
+                cursor: pointer;
+                border: 1px solid #FF883F;
+            }
+            .panel-heading{
+                font-size: 16px!important;
+                height: 42px!important;
+                color: white!important;
+                background-color: #FF883F!important;
+                border-color:#3e6c94;
+            }
+            .panel-body{
+                font-size: 14px!important;
+            }
+            .no-padding{
+                padding-left: 0px!important;
+                padding-right: 0px!important;
+            }
+            .animate-bottom {
+                position: relative;
+                -webkit-animation-name: animatebottom;
+                -webkit-animation-duration: 0.20s;
+                animation-name: animatebottom;
+                animation-duration: 0.20s
+            }
+
+            @-webkit-keyframes animatebottom {
+                from { bottom:-100px; opacity:0 }
+                to { bottom:0px; opacity:1 }
+            }
+
+            @keyframes animatebottom {
+                from{ bottom:-100px; opacity:0 }
+                to{ bottom:0; opacity:1 }
+            }
+
+            .animate-top {
+                position: relative;
+                -webkit-animation-name: animatetop;
+                -webkit-animation-duration: 0.50s;
+                animation-name: animatetop;
+                animation-duration: 0.50s
+            }
+
+            @-webkit-keyframes animatetop {
+                from { top:-100px; opacity:0 }
+                to { top:0px; opacity:1 }
+            }
+
+            @keyframes animatetop {
+                from{ top:-100px; opacity:0 }
+                to{ top:0; opacity:1 }
+            }
+
+            .animate-left {
+                position: relative;
+                -webkit-animation-name: animateleft;
+                -webkit-animation-duration: 0.20s;
+                animation-name: animateleft;
+                animation-duration: 0.20s
+            }
+
+            @-webkit-keyframes animateleft {
+                from { left:-100px; opacity:0 }
+                to { left:0px; opacity:1 }
+            }
+
+            @keyframes animateleft {
+                from{ left:-100px; opacity:0 }
+                to{ left:0; opacity:1 }
+            }
+            .loading-container {
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                background: rgba(0,0,0,.6);
+                z-index: 100000;
+            }
+            .loading-container .loader {
+                left: 0;
+                top: 40%;
+                text-align: center;
+                background: transparent;
+                height: 20%;
+                z-index: 999999;
+                border-radius: 5px;
+                color: white;
+                padding-top: 0%;
+                color: #8B8B8B;
+                position: relative;
+                width: 100%;
+                background-color: rgba(0,0,0,.8);
+                padding: 20px;
+            }
+
+            .loadertext {
+                margin-top: 5px;
+                font-size: 20px;
+            }
+
+        </style>
+
+        <link rel="stylesheet" type="text/css" href="css/cssTab/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="css/cssTab/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/cssTab/tabs.css" />
+        <link rel="stylesheet" type="text/css" href="css/cssTab/tabstyles.css" />
+        <script src="js/jsTab/modernizr.custom.js"></script>
+        <script src="js/checkout.js"></script>
+    </head>
+    <body style="background-color: #ffffff;background-size: cover" ng-controller="MainController" ng-init="init($event)">
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #FF883F!important;">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" style="color: #ffffff;font-size: 25px;">SmallBite</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" style="font-size: 18px;cursor: hand" ng-hide="loginSucess">
+                        <li ng-click="showLoginWindow($event)"><a style="color: #ffffff!important; font-size: 16px;"><b><i class="fa fa-sign-in"></i>&nbsp; Login</b></a></li>
+                        <li ng-click="showSignupWindow($event)"><a style="color: #ffffff!important;font-size: 16px;"><b><i class="fa fa-user-plus"></i>&nbsp;Sign Up</b></a></li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" style="font-size: 18px;cursor: hand" ng-hide="!loginSucess">
+                        <li ng-click="showUserProfile($event)"><a style="color: #ffffff!important;font-size: 16px;"><b><i class="fa fa-user"></i>&nbsp; My Profile</b></a></li>
+                        <li ng-click="showMyOrderHistory($event)"><a style="color: #ffffff!important;font-size: 16px;"><b><i class="fa fa-info"></i>&nbsp; My Orders</b></a></li>
+                        <li ng-click="logoutUser()"><a style="color: #ffffff!important;font-size: 16px;"><b><i class="fa fa-power-off"></i>&nbsp; Logout</b></a></li>
+
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+
+        <div class="container theme-showcase" role="main" style="width: 100%">
+            <div class="col-xs-12" style="margin-top: 10%;margin-bottom: 5%" align="center" ng-show="!loginSucess">
+                <label style="font-size: 25px;color: #FF883F">SmallBite - Ghar Ka Khana</label>
+            </div>
+
+            <div class="col-xs-12" ng-show="loginSucess" style="margin-top: 6%">
+
+                <div class="col-xs-12 no-padding" >
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tabClass" ng-class="{tabActiveClass:todaysMenus == true}" ng-click="todaysMenus = true" align="center">
+                        TODAYS MENUS
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tabClass" ng-class="{tabActiveClass:todaysMenus == false}" align="center" ng-click="todaysMenus = false">
+                        TOMORROWS MENUS
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tabClass" align="center" style="width: 30%;margin-left: 2%;background-color: #FF883F;color: white;">
+                        <img src="img/add-to-cart-light.png" height="30px">&nbsp; YOUR CART
+                    </div>
+                    <div ng-show="todaysMenus" class="col-xs-12 col-sm-8 col-md-8 col-lg-8" align="center" style="    border: 1px solid lightgray;height: 500px;overflow: scroll">
+
+                        <div ng-show="todaysTiffin.length > 0" class="col-xs-12 " style="margin-top: 5%" ng-repeat="tiffin in todaysTiffin">
+                            <div class="panel panel-default animate-top" style="width: 65%">
+                                <div class="panel-heading">
+                                    <label style="float: left" ng-if="tiffin.isLunch">Lunch</label>
+                                    <label style="float: left" ng-if="!tiffin.isLunch">Dinner</label>
+                                    <label style="float: right"><b>{{tiffin.tiffinCharges}}</b>/-</label>
+                                </div>
+                                <div class="panel-body" align="left" ng-if="tiffin.menuItems.length > 0">
+                                    <div class="col-xs-12" ng-repeat="menus in tiffin.menuItems">
+                                        <label>{{menus.menuItemname}}</label>
+                                    </div>
+                                    <div class="col-xs-12" align="right">
+                                        <button class="btn btn-primary" ng-click="addToCartTiffin(tiffin)"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;Add To Cart </button>
+                                    </div>
+                                </div>
+                                <div class="panel-body" align="left" ng-if="tiffin.menuItems.length <= 0">
+                                    <label style="font-size: 20px;color: lightgray">No menus available...</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="todaysTiffin.length <= 0" class="col-xs-12" style="margin-top: 28%">
+                            <label style="font-size: 28px;color: lightgray">We are updating menu very soon</label>
+                        </div>
+
+                    </div>
+                    <div ng-show="!todaysMenus"class="col-xs-12 col-sm-8 col-md-8 col-lg-8 " align="center" style="    border: 1px solid lightgray;height: 500px;overflow: scroll">
+                        <div ng-show="tomorrowsTiffin.length > 0" class="col-xs-12 " style="margin-top: 5%" ng-repeat="tiffin in tomorrowsTiffin">
+                            <div class="panel panel-default animate-top" style="width: 65%">
+                                <div class="panel-heading">
+                                    <label style="float: left" ng-if="tiffin.isLunch">Lunch</label>
+                                    <label style="float: left" ng-if="!tiffin.isLunch">Dinner</label>
+                                    <label style="float: right"><b>{{tiffin.tiffinCharges}}</b>/-</label>
+                                </div>
+                                <div class="panel-body" align="left" ng-if="tiffin.menuItems.length > 0">
+                                    <div class="col-xs-12" ng-repeat="menus in tiffin.menuItems">
+                                        <label>{{menus.menuItemname}}</label>
+                                    </div>
+                                    <div class="col-xs-12" align="right">
+                                        <button class="btn btn-primary" ng-click="addToCartTiffin(tiffin, 'tommorow')"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;Add To Cart </button>
+                                    </div>
+                                </div>
+                                <div class="panel-body" align="left" ng-if="tiffin.menuItems.length <= 0">
+                                    <label style="font-size: 20px;color: lightgray">No menus available...</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-show="tomorrowsTiffin.length <= 0" class="col-xs-12" style="margin-top: 28%">
+                            <label style="font-size: 28px;color: lightgray">We are updating menu very soon</label>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="height: 500px;overflow: scroll;width: 30%;margin-left: 2%;border: 1px solid lightgray;">
+                        <div ng-show="selectedTiffins.length > 0" class="col-xs-12 animate-left" style="margin-top: 5%" ng-repeat="tiffin in selectedTiffins" align="center">
+                            <div class="panel panel-default" style="width: 90%;margin-bottom: 0px">
+                                <div class="panel-heading">
+                                    <label style="float: left" ng-if="tiffin.isLunch">Lunch</label>
+                                    <label style="float: left" ng-if="!tiffin.isLunch">Dinner</label>
+                                    <label style="float: right;margin-top: -8px;"><b>{{tiffin.totalPrice | number:2}}</b>/-
+                                        <span ng-click="removeSelectedTiffin(tiffin, $index)" style="font-size: 22px;padding-left: 10px;padding-right: 10px;cursor: pointer">x</span>
+                                    </label>
+                                </div>
+                                <div class="panel-body" align="left">
+                                    <div class="col-xs-12" ng-repeat="menus in tiffin.menuItems">
+                                        <label>{{menus.menuItemname}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 no-padding" style="margin-left:55%;width: 40%;height: 30px;border: 1px solid lightgray;border-radius: 8px;">
+                                <div class="col-xs-4 no-padding" align="center" style="font-size: 20px;height: 100%;border-right: 1px solid lightgray;    background-color: #2f9079;border-color: #204d74;color: white;" ng-click="incrementCounter($index)"><span >+</span></div>
+                                <div class="col-xs-4 no-padding" align="center" style="font-size: 20px">{{tiffin.counter}}</div>
+                                <div class="col-xs-4 no-padding" align="center" style="font-size: 20px;height: 100%;border-left: 1px solid lightgray;    background-color: #2f9079;border-color: #204d74;color: white;" ng-click="decrementCounter($index)"><span >-</span></div>
+                            </div>
+
+                        </div>
+                        <div ng-show="selectedTiffins.length > 0" class="col-xs-12" style="margin-top: 4%" >
+                            <button ng-click="proceedToPayment()" class="btn btn-primary" style="width: 100%;">Pay Rs. {{gradTotal | number:2}}</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 alert alert-danger notification" style="z-index:99999;width: 45%;font-size: 16px;position: fixed;top: 55%;left: 28%;" ng-show="showError">
+                {{errorMsg}}
+            </div>
+        </div>
+
+        <div class="loading-container" style="display: none;">
+            <div class="loader">
+                <p class="loadertext">Please wait...</p>
+            </div>
+        </div>
+        <!--controllers include---->
+
+        <script src="js/jsTab/cbpFWTabs.js"></script>
+        <script>
+                    (function() {
+
+                        [].slice.call(document.querySelectorAll('.tabs')).forEach(function(el) {
+                            new CBPFWTabs(el);
+                        });
+
+                    })();
+        </script>
+    </body>
+</html>
+
+
+

@@ -1,0 +1,20 @@
+<md-dialog aria-label="Confirm Dialog"  ng-cloak style="width: 30%">
+    <md-dialog-content >
+        <div class="width-100 pull-right">
+            <label style="font-size: 26px;margin-right: 20px;cursor: pointer" ng-click="closeModalWindow()">x</label>
+        </div>
+        <div class="md-dialog-content">
+            <md-content layout-padding="" >
+                <h4>Confirmation Required</h4>
+                <div class="width-100">
+                   <label style="font-size: 16px">{{confirmationMessage}}</label>
+                </div>
+                <div class="width-100" style="display: flex">
+                    <md-button style="width: 45%;display: inline-block" ng-click="confirmationResponse('YES')">&nbsp;Yes</md-button>
+                    <md-button style="width: 45%;display: inline-block" ng-click="confirmationResponse('NO')">&nbsp;No</md-button>
+                </div>
+            </md-content>
+
+        </div>
+    </md-dialog-content>
+</md-dialog>

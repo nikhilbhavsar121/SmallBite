@@ -1,0 +1,43 @@
+<md-dialog aria-label="Login"   style="width: 30%">
+    <md-dialog-content>
+        <div class="width-100 pull-right">
+            <label style="font-size: 26px;margin-right: 20px;cursor: pointer" ng-click="closeModalWindow()">x</label>
+        </div>
+        <div class="md-dialog-content">
+<md-content layout-padding="">
+    <form name="projectForm">
+
+        <h4>Please Sign In</h4>
+        <md-input-container class="md-block" style="margin-top: 10%">
+            <label style="font-size: 16px!important;" >Mobile Number</label>
+            <input style="font-size: 20px!important;" required name="mobileNumber" ng-model="loginObj.mobileNumber" type="number" ng-maxlength="10" ng-minlength="10" maxlength="10">
+            <div ng-if="projectForm.mobileNumber.$invalid" style="display: none">
+                <div>Invalid mobile number.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" style="margin-top: 10%;margin-bottom: -10px">
+            <label style="font-size: 16px!important;" >Password</label>
+            <input style="font-size: 20px!important;"  required type="password" name="userPass" ng-model="loginObj.passWord" >
+
+            <!--<div ng-messages="projectForm.userPass.$error" role="alert">-->
+                <!--<div ng-message="required">This is required.</div>-->
+            <!--</div>-->
+        </md-input-container>
+        <div ng-click="openForgotPassword($event)" class="width-100">
+            <label style="cursor:pointer;font-size: 14px;color: blue;text-decoration: underline;margin-bottom: 8px;" class="pull-right">Forgot Password</label>
+        </div>
+
+
+        <div class="width-100" align="center">
+            <md-button md-no-ink="" ng-disabled="projectForm.$invalid" ng-click="loginToSmallBite($event)" class="md-primary" style="height:40px;width: 100%;background-color: #FF883F;color: white;">Sign In</md-button>
+        </div>
+        <div class="width-100" align="center">
+            <md-button md-no-ink=""  ng-click="showSignupWindow($event)" class="md-primary" style="height:40px;    width: 100%;background-color: #FF883F;color: white;">Sign Up</md-button>
+        </div>
+
+    </form>
+</md-content>
+            </div>
+        </md-dialog-content>
+    </md-dialog>

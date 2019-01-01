@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="true"
+                     xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+    <appender name="TiffinFileAppender" class="org.apache.log4j.RollingFileAppender">
+        <param name="Append" value="false" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+        <!-- For Tomcat -->
+        <param name="File" value="${catalina.home}/logs/TiffinAppLog.log" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" 
+                   value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+        </layout>
+    </appender>
+
+    <root>
+        <level value="ERROR" />
+        <level value="DEBUG"/>
+        <level value="INFO"/>
+        <appender-ref ref="TiffinFileAppender" />
+    </root>
+
+</log4j:configuration>

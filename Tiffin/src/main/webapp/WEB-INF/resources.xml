@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <Resource id="SmallBite" type="javax.sql.DataSource">#Sun Oct 09 16:17:44 IST 2016
+jdbcDriver=com.mysql.jdbc.Driver
+password=root
+userName=root
+jdbcUrl=jdbc\:mysql\://smallbite.in\:3306/SmallBiteTesting?zeroDateTimeBehavior\=convertToNull
+</Resource>
+</resources>
