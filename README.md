@@ -1,3 +1,3 @@
-1)This Project developed in java spring and hybernate
-2)front end developed in angularjs
-3)food application available on playstore
+1)This Project developed in Java ,Spring and hibernate.
+2)Front end developed in angularjs.
+3)This is a food application available on playstore.
